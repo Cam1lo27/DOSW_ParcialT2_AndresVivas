@@ -345,3 +345,13 @@ codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto,
 - Validadores: Verifican que los datos cumplen con ciertas reglas de negocio antes de ser procesados.
 
 Los servicios manejan la logica del negocio, las utilidades manejan funciones que no dependen de esta logica de negocio y los validadores verifican que los datos cumplan con las reglas del negocio.
+
+
+
+### Punto 16
+
+![pantalla inicio sesion.png](docs%2Fimages%2Fpantalla%20inicio%20sesion.png)
+
+![pantalla rgidtro.png](docs%2Fimages%2Fpantalla%20rgidtro.png)
+
+![seleccion productos.png](docs%2Fimages%2Fseleccion%20productos.png)
