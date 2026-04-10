@@ -1,4 +1,4 @@
-package DOSW_ParcialT2;
+package edu.dosw.parcial;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
