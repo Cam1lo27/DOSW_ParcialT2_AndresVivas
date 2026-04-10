@@ -309,5 +309,17 @@ La diferencia es que las validaciones de input validan el formato, tipo y obliga
 
 Por ejemplo las validaciones de input validan cosas como email valido y las validaciones de negocio validan que sea email institucional o no este duplicado.
 
+### Punto 3
+
+- Autenticacion: Es el proceso por el cual se verifica la identidad del usuario o cliente que intenta acceder a la API
+
+- Autorizacion: Es la forma en la que se define como tal que es lo que puede hacer el usuario dentro del sistema luego de ser autenticado 
+
+- Integridad: Es la verificacion que garantiza que los datos no se han modificado o alterado durante una transmicion de datos o almacenamiento
+
+La autenticacion dice quien es el usuario, la autorizacion define que puede hacer el usuario y la integridad revisa si el mensaje o dato llego correctamente y completo como fue enviado.
+
 ### Punto 4
 ![img.png](docs/uml/DiagramaComponentesGeneral.png)
+
+
