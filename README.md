@@ -331,7 +331,7 @@ codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto,
 
 
 ### Punto6
-![img.png](DiagramaComponentesEspecifico.png)
+![img.png](docs/uml/DiagramaComponentesEspecifico.png)
 
 
 ### Punto 7
@@ -343,3 +343,6 @@ codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto,
 - Validadores: Verifican que los datos cumplen con ciertas reglas de negocio antes de ser procesados.
 
 Los servicios manejan la logica del negocio, las utilidades manejan funciones que no dependen de esta logica de negocio y los validadores verifican que los datos cumplan con las reglas del negocio.
+
+### Punto 10
+![img_1.png](docs/uml/Diagrama clases.png)
