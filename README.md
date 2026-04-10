@@ -331,7 +331,7 @@ codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto,
 
 
 ### Punto6
-![img.png](DiagramaComponentesEspecifico.png)
+![img.png](docs/uml/DiagramaComponentesEspecifico.png)
 
 
 ### Punto 7
@@ -343,3 +343,27 @@ codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto,
 - Validadores: Verifican que los datos cumplen con ciertas reglas de negocio antes de ser procesados.
 
 Los servicios manejan la logica del negocio, las utilidades manejan funciones que no dependen de esta logica de negocio y los validadores verifican que los datos cumplan con las reglas del negocio.
+
+### Punto 11
+- Ciclo TDD: Red, falla porque no esxiste implementacion, Greeen, Se implementa lo minimo necesario, las pruebas pasan, y Refactor, LImpieza codigo sin romper pruebas.
+- Casos de prueba iniciales, con escenarios exitoso el usuario crea el pedido correctamente; en escenario de error, Stock insuficiente, usuario con pedio activo.
+- Validaciones clave: un solo pedido activo, estado inicial correcto y usuario autenticado
+
+### Punto 12
+Detectan violaciones a reglas, evitan regresiones, garantizan invariantes y facilitan refactorizacion.
+
+### Punto 13
+1. Build: Compilacion proyecto.
+2. Test: Ejecucion de pruebas
+3. Quality Check: Anaisis estatico de cobertura
+4. Package: Generacion del artefacto.
+5. Deploy: Despliegue en entorno destino
+
+### Punto 14
+ No se permite el despliegue. Riesgo de errores, violacion de reglas de negocio perdida de confieanza del cierrE.
+ 
+Un pipeline correcto frena el proceso automaticamente.
+
+### Punto 15
+a. Timestamp, nivel del log, Endpoint, mensaje de error, id del usuario.
+b. Contraseñas, tokens JWT, datos personales, informacion financiera.
