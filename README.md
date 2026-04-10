@@ -328,3 +328,17 @@ La autenticacion dice quien es el usuario, la autorizacion define que puede hace
 se puede complicar el proyecto a la hora de extenderlo, leerlo y entenderlo a nivel de 
 codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto, por lo que no se cumplirian con algunos principios SOLID.
 
+
+
+
+
+
+### Punto 7
+
+- Servicios: Es el que se encarga de tener reglas de la logica de negocio.
+
+- Utilidades: Son quienes contienen las funciones que no dependen directamente de las reglas de negocio, no tienen persistencia ni logica de negocio muy importante.
+
+- Validadores: Verifican que los datos cumplen con ciertas reglas de negocio antes de ser procesados.
+
+Los servicios manejan la logica del negocio, las utilidades manejan funciones que no dependen de esta logica de negocio y los validadores verifican que los datos cumplan con las reglas del negocio.
