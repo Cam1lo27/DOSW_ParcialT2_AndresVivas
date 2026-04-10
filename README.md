@@ -1,6 +1,9 @@
 # DOSW - Parcial T2
 
 **Andrés Camilo Vivas Baquero** 
+**Andres Sabogal**
+
+***PUNTOS PARA EL PARCIAL - Andres Vivas : +0,2***
 
 **Grupo 1** 
 
