@@ -304,3 +304,7 @@ Ejemplo de salida:
 
 Validaciones - solo cancelar pedido si su estado es CREADO 
 
+### Punto 2
+La diferencia es que las validaciones de input validan el formato, tipo y obligaciones; mientras que las validaciones de negocio validan reglas del sistema o dominio como tal.
+
+Por ejemplo las validaciones de input validan cosas como email valido y las validaciones de negocio validan que sea email institucional o no este duplicado.
