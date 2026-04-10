@@ -311,3 +311,10 @@ Por ejemplo las validaciones de input validan cosas como email valido y las vali
 
 ### Punto 4
 ![img.png](docs/uml/DiagramaComponentesGeneral.png)
+
+### Punto 5
+
+- Si no se maneja un buen orden o separacion de capas dentro de un proyecto de software 
+se puede complicar el proyecto a la hora de extenderlo, leerlo y entenderlo a nivel de 
+codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto, por lo que no se cumplirian con algunos principios SOLID.
+
