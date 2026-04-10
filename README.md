@@ -312,6 +312,7 @@ La diferencia es que las validaciones de input validan el formato, tipo y obliga
 
 Por ejemplo las validaciones de input validan cosas como email valido y las validaciones de negocio validan que sea email institucional o no este duplicado.
 
+
 ### Punto 3
 
 - Autenticacion: Es el proceso por el cual se verifica la identidad del usuario o cliente que intenta acceder a la API
@@ -332,8 +333,8 @@ se puede complicar el proyecto a la hora de extenderlo, leerlo y entenderlo a ni
 codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto, por lo que no se cumplirian con algunos principios SOLID.
 
 
-
-
+### Punto6
+![img.png](docs/uml/DiagramaComponentesEspecifico.png)
 
 
 ### Punto 7
@@ -355,3 +356,26 @@ Los servicios manejan la logica del negocio, las utilidades manejan funciones qu
 ![pantalla rgidtro.png](docs%2Fimages%2Fpantalla%20rgidtro.png)
 
 ![seleccion productos.png](docs%2Fimages%2Fseleccion%20productos.png)
+### Punto 11
+- Ciclo TDD: Red, falla porque no esxiste implementacion, Greeen, Se implementa lo minimo necesario, las pruebas pasan, y Refactor, LImpieza codigo sin romper pruebas.
+- Casos de prueba iniciales, con escenarios exitoso el usuario crea el pedido correctamente; en escenario de error, Stock insuficiente, usuario con pedio activo.
+- Validaciones clave: un solo pedido activo, estado inicial correcto y usuario autenticado
+
+### Punto 12
+Detectan violaciones a reglas, evitan regresiones, garantizan invariantes y facilitan refactorizacion.
+
+### Punto 13
+1. Build: Compilacion proyecto.
+2. Test: Ejecucion de pruebas
+3. Quality Check: Anaisis estatico de cobertura
+4. Package: Generacion del artefacto.
+5. Deploy: Despliegue en entorno destino
+
+### Punto 14
+ No se permite el despliegue. Riesgo de errores, violacion de reglas de negocio perdida de confieanza del cierrE.
+ 
+Un pipeline correcto frena el proceso automaticamente.
+
+### Punto 15
+a. Timestamp, nivel del log, Endpoint, mensaje de error, id del usuario.
+b. Contraseñas, tokens JWT, datos personales, informacion financiera.
