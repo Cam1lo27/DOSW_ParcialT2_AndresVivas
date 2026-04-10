@@ -309,6 +309,7 @@ La diferencia es que las validaciones de input validan el formato, tipo y obliga
 
 Por ejemplo las validaciones de input validan cosas como email valido y las validaciones de negocio validan que sea email institucional o no este duplicado.
 
+
 ### Punto 3
 
 - Autenticacion: Es el proceso por el cual se verifica la identidad del usuario o cliente que intenta acceder a la API
@@ -329,8 +330,8 @@ se puede complicar el proyecto a la hora de extenderlo, leerlo y entenderlo a ni
 codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto, por lo que no se cumplirian con algunos principios SOLID.
 
 
-
-
+### Punto6
+![img.png](DiagramaComponentesEspecifico.png)
 
 
 ### Punto 7
