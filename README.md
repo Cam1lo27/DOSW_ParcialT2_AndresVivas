@@ -513,3 +513,11 @@ b. Contraseñas, tokens JWT, datos personales, informacion financiera.
 - Pantalla de Creación del pedido
 
 ![pedido.png](docs/images/pedido.png)
+
+---
+
+
+# Parte practica
+
+Reporte Jacoco
+![img.png](docs/images/Jacoco.png)
