@@ -472,8 +472,9 @@ a. Timestamp, nivel del log, Endpoint, mensaje de error, id del usuario.
 
 b. Contraseñas, tokens JWT, datos personales, informacion financiera.
 
+---
 
-### Punto 16
+## Punto 16
 
 - Pantalla de registro de usuario
 
