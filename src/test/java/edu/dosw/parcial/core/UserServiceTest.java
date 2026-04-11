@@ -55,7 +55,7 @@ class UserServiceTest {
         var response = userService.register(validRequest);
 
         assertNotNull(response);
-        assertEquals("andres@unal.edu.co", response.getEmail());
+        assertEquals("andres.vivas-b@mail.escuelaing.edu.co", response.getEmail());
         assertEquals("CLIENTE", response.getRole());
         verify(userRepository).save(any());
     }
