@@ -472,12 +472,21 @@ a. Timestamp, nivel del log, Endpoint, mensaje de error, id del usuario.
 
 b. Contraseñas, tokens JWT, datos personales, informacion financiera.
 
----
 
-## Punto 16
+### Punto 16
 
-![pantalla inicio sesion.png](docs%2Fimages%2Fpantalla%20inicio%20sesion.png)
+- Pantalla de registro de usuario
 
-![pantalla rgidtro.png](docs%2Fimages%2Fpantalla%20rgidtro.png)
+![registro.png](docs/images/registro.png)
 
-![seleccion productos.png](docs%2Fimages%2Fseleccion%20productos.png)
+- Pantalla de inicio de sesion
+
+![iniciosesion.png](docs/images/iniciosesion.png)
+
+- Pantalla de lista de productos y detalle de productos
+
+![productos.png](docs/images/productos.png)
+
+- Pantalla de Creación del pedido
+
+![pedido.png](docs/images/pedido.png)
