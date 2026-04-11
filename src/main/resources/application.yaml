@@ -5,7 +5,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/dosw_parcial
     username: postgres
-    password:
+    password: "1234"
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -23,3 +23,8 @@ server:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+
+logging:
+  level:
+    edu.dosw.parcial: DEBUG
+    org.springframework.security: INFO
