@@ -443,6 +443,18 @@ Este patron permite encapsular el comportamiento de cada estado, evitar multiple
 
 ## Punto 10
 
+**Indice 1: indice sobre email en la entidad Usuario**
+
+Se propone un indice sobre el campo email de la tabla Usuario.
+
+Este indice mejora el rendimiento en operaciones de registro y autenticacion, ya que el sistema valida constantemente si un email ya existe y tambien lo utiliza para iniciar sesion. Al ser un campo muy consultado y unico, el indice permite una busqueda mas rapida y evita recorridos completos de la tabla.
+
+**Indice 2: indice compuesto sobre pedido_id y producto_id en DetallePedido**
+
+Se propone un indice sobre los campos pedido_id y producto_id en la tabla DetallePedido.
+
+Este indice ayuda a que el sistema identifique mas rapido que productos pertenecen a un pedido especifico, sobre todo cuando el usuario crea, confirma o revisa un pedido. De esta forma se agiliza la consulta de la informacion y el sistema responde mas rapido.
+
 ---
 
 ## Punto 11
