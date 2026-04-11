@@ -348,14 +348,6 @@ codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto,
 Los servicios manejan la logica del negocio, las utilidades manejan funciones que no dependen de esta logica de negocio y los validadores verifican que los datos cumplan con las reglas del negocio.
 
 
-
-### Punto 16
-
-![pantalla inicio sesion.png](docs%2Fimages%2Fpantalla%20inicio%20sesion.png)
-
-![pantalla rgidtro.png](docs%2Fimages%2Fpantalla%20rgidtro.png)
-
-![seleccion productos.png](docs%2Fimages%2Fseleccion%20productos.png)
 ### Punto 11
 - Ciclo TDD: Red, falla porque no esxiste implementacion, Greeen, Se implementa lo minimo necesario, las pruebas pasan, y Refactor, LImpieza codigo sin romper pruebas.
 - Casos de prueba iniciales, con escenarios exitoso el usuario crea el pedido correctamente; en escenario de error, Stock insuficiente, usuario con pedio activo.
@@ -379,3 +371,22 @@ Un pipeline correcto frena el proceso automaticamente.
 ### Punto 15
 a. Timestamp, nivel del log, Endpoint, mensaje de error, id del usuario.
 b. Contraseñas, tokens JWT, datos personales, informacion financiera.
+
+
+### Punto 16
+
+- Pantalla de registro de usuario
+
+![registro.png](docs/images/registro.png)
+
+- Pantalla de inicio de sesion
+
+![iniciosesion.png](docs/images/iniciosesion.png)
+
+- Pantalla de lista de productos y detalle de productos
+
+![productos.png](docs/images/productos.png)
+
+- Pantalla de Creación del pedido
+
+![pedido.png](docs/images/pedido.png)
