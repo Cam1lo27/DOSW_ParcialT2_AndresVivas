@@ -427,6 +427,7 @@ Los servicios manejan la logica del negocio, las utilidades manejan funciones qu
 
 ## Punto 8
 ![img.png](docs/uml/DiagramaClasesModelos.png)
+
 Para manejar los estados del pedido se usaria el patron State.
 
 La razon es que el pedido cambia de estado durante su ciclo de vida (CREADO, EN_PREPARACION, ENTREGADO y CANCELADO) y en cada estado se permiten o no ciertas acciones.
@@ -436,8 +437,11 @@ Este patron permite encapsular el comportamiento de cada estado, evitar multiple
 ---
 
 ## Punto 9
+![img.png](docs/uml/DiagramaEntidadRelacion.png)
 
 ---
+
+## Punto 10
 
 ---
 
