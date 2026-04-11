@@ -1,5 +1,6 @@
 package edu.dosw.parcial.controller;
 
+import edu.dosw.parcial.controller.dtos.request.RegisterRequest;
 import edu.dosw.parcial.controller.dtos.response.ApiResponse;
 import edu.dosw.parcial.controller.dtos.response.UserResponse;
 import edu.dosw.parcial.core.services.UserService;

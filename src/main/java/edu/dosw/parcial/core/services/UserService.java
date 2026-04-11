@@ -1,5 +1,6 @@
 package edu.dosw.parcial.core.services;
 
+import edu.dosw.parcial.controller.dtos.request.RegisterRequest;
 import edu.dosw.parcial.controller.dtos.response.UserResponse;
 import edu.dosw.parcial.core.exception.BusinessException;
 import edu.dosw.parcial.core.models.RoleEnum;

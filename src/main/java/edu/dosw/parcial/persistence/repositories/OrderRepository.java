@@ -2,6 +2,7 @@ package edu.dosw.parcial.persistence.repositories;
 
 import edu.dosw.parcial.core.models.OrderStatusEnum;
 import edu.dosw.parcial.persistence.entities.OrderEntity;
+import edu.dosw.parcial.persistence.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
