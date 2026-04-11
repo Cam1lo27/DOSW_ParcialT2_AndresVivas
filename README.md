@@ -15,305 +15,375 @@
 
 ![figma.png](docs/images/figma.png)
 
-# PARTE TEORICA
+---
 
+# PARTE TEORICA
 
 ## Punto 1
 
 ### Identificacion de funcionalidades
 
-a. Que tipo de verbo HTTP Maneja
+**a.** Que tipo de verbo HTTP Maneja
 
-b. Establezca si es una funcionalidad idempotente o no
+**b.** Establezca si es una funcionalidad idempotente o no
 
-c. Cuál es la razón técnica de su decisión.
+**c.** Cuál es la razón técnica de su decisión.
 
-d. Cuáles Roles de los identificados tienen acceso a esa funcionalidad
+**d.** Cuáles Roles de los identificados tienen acceso a esa funcionalidad
 
-e. Mencione sus datos de entrada y de salida (Establezca de qué tipo
+**e.** Mencione sus datos de entrada y de salida (Establezca de qué tipo
 es cada propiedad y si es obligatorio o no)
 
-f. De un ejemplo de cómo se vería la entrada y la salida.
+**f.** De un ejemplo de cómo se vería la entrada y la salida.
 
-g. Establezca qué validaciones de input y el negocio debe tener en
+**g.** Establezca qué validaciones de input y el negocio debe tener en
 cuenta.
 
-h. Establezca los códigos HTTP y mensaje para Happy Path y Flujo de
+**h.** Establezca los códigos HTTP y mensaje para Happy Path y Flujo de
 Error
 
-- F-O1 Registro de usuario 
+### F-O1 Registro de usuario 
 
-Verbo HTTP - POST
+- Verbo HTTP - POST
 
-Idempotente - No
+- Idempotente - No
 
-Razon - Cada llamada crea un nuevo recurso en base de datos. Múltiples requests con el mismo email deben retornar error, no el mismo resultado.
+- Razon - Cada llamada crea un nuevo recurso en base de datos. Múltiples requests con el mismo email deben retornar error, no el mismo resultado.
 
-Roles con acceso - Cliente
+- Roles con acceso - Cliente
 
-Datos entrada:  
+- Datos entrada:  
 
-Name: "string", - Obligatorio 
+    - Name: "string", - Obligatorio 
 
-Mail: "String" , - Obligatorio
+    - Mail: "String" , - Obligatorio
 
-password: "String" - Obligatorio
+    - password: "String" - Obligatorio
 
-Datos Salida - Mensaje de confirmacion al usuario de creacion de perfil exitosa 
+- Datos Salida - Mensaje de confirmacion al usuario de creacion de perfil exitosa 
 
-Ejemplo de entrada: 
+- Ejemplo de entrada: 
 
-{
-"name": "Andres Vivas ",
+        {
+        "name": "Andres Vivas ",
+        
+        "email": "andres.vivas-b@mail.escuelaing.edu.co ",
+        
+        "password": "Contraseña123"
+        }
 
-"email": "andres.vivas-b@mail.escuelaing.edu.co ",
+- Ejemplo de salida: 
 
-"password": "Contraseña123"
-}
+        {
+        "id": "uuid",
+        
+        "name": "Andres Vivas",
+        
+        "email": "andres.vivas-b@mail.escuelaing.edu.co",
+        
+        "createdAt": "2025-04-10T12:00:00Z"
+        }
 
-Ejemplo de salida: 
+- Validaciones input - nombre no vacío, email con formato válido, contraseña mínimo 8 caracteres con al menos 1 número.
 
-{
-"id": "uuid",
+- Validaciones output - el email no debe estar registrado previamente.
 
-"name": "Andres Vivas",
+- Codigos HTTP, mensaje happy path y flujo de error
 
-"email": "andres.vivas-b@mail.escuelaing.edu.co",
+    - Happy Path - 201 Created - Usuario registrado exitosamente
 
-"createdAt": "2025-04-10T12:00:00Z"
-}
+    - Email - ya existe - 409 Conflict - El correo ya está registrado
 
-Validaciones input - nombre no vacío, email con formato válido, contraseña mínimo 8 caracteres con al menos 1 número.
+    - Datos inválidos - 400 Bad Request - Campo inválido
 
-Validaciones output - el email no debe estar registrado previamente.
+    - Error servidor - 500 Internal Server Error - Error interno del servidor
 
-Codigos HTTP, mensaje happy path y flujo de error
 
-Happy Path - 201 Created - Usuario registrado exitosamente
 
-Email - ya existe - 409 Conflict - El correo ya está registrado
+### F-O2 Login Usuario/ Autenticacion
 
-Datos inválidos - 400 Bad Request - Campo inválido
+- Verbo HTTP - POST
 
-Error servidor - 500 Internal Server Error - Error interno del servidor
+- Idempotente - No
 
+- Razon - Genera un token nuevo en cada llamada, aunque las credenciales sean las mismas.
 
+- Roles con acceso - Cliente / Señora cafeteria
 
-- F-O2 Login Usuario/ Autenticacion
+- Datos entrada:
 
-Verbo HTTP - POST
+    - Mail: "String" , - Obligatorio
 
-Idempotente - No
+    - password: "String" - Obligatorio
 
-Razon - Genera un token nuevo en cada llamada, aunque las credenciales sean las mismas.
+- Datos Salida - Se genera un token y el codigo del usuario 
 
-Roles con acceso - Cliente / Señora cafeteria
+- Ejemplo de entrada:
 
-Datos entrada:
+        {
+        
+        "email": "string",
+        
+        "password": "string"
+        
+        }
 
-Mail: "String" , - Obligatorio
+- Ejemplo de salida:
 
-password: "String" - Obligatorio
+        {
+        
+        "token": "eyJhbGciOiJIUzI1NiJ9...",
+        
+        "userId": "uuid",
+        
+        }
 
-Datos Salida - Se genera un token y el codigo del usuario 
+- Validaciones input - email y password no vacíos, email con formato válido.
 
-Ejemplo de entrada:
+- Validaciones output - las credenciales deben coincidir con un usuario registrado y activo..
 
-{
+- Codigos HTTP, mensaje happy path y flujo de error
 
-"email": "string",
+    - Happy Path	200 OK	— Token generado
 
-"password": "string"
+    - Credenciales incorrectas	401 Unauthorized	Credenciales inválidas
 
-}
+    - Datos inválidos	400 Bad Request	El campo email es obligatorio
 
-Ejemplo de salida:
 
-{
+### F-O3 Los productos pueden ser consultados mediante escaneo de código QR
 
-"token": "eyJhbGciOiJIUzI1NiJ9...",
+- Verbo HTTP - GET
 
-"userId": "uuid",
+- Idempotente - Si
 
-}
+- Razon - GET nunca modifica estado del servidor. Múltiples llamadas iguales retornan el mismo resultado.
 
-Validaciones input - email y password no vacíos, email con formato válido.
+- Roles con acceso - Cliente
 
-Validaciones output - las credenciales deben coincidir con un usuario registrado y activo..
+- Datos entrada: ID-Codigo-QR: "Uuid" – Obligatorio
 
-Codigos HTTP, mensaje happy path y flujo de error
+- Datos Salida - Autorizacion: Bearer token
 
-Happy Path	200 OK	—
+- Ejemplo de entrada:
 
-Credenciales incorrectas	401 Unauthorized	Credenciales inválidas
+        {
+        
+        ID-Codigo-QR: "Uuid"
+        
+        }
 
-Datos inválidos	400 Bad Request	El campo email es obligatorio
+- Ejemplo de salida:
 
+        {
+        
+        "productId": "uuid",
+        
+        "name": "Cafe con leche",
+        
+        "description": "Cafe caliente con leche",
+        
+        "price": 2500,
+        
+        "stock": 10,
+        
+        "status": "DISPONIBLE"
+        
+        }
 
-- F-O3 Los productos pueden ser consultados mediante escaneo de código QR
+- Validaciones input – el código QR debe tener formato válido.
 
-Verbo HTTP - GET
+- Validaciones de negocio – el producto debe existir y estar disponible.
 
-Idempotente - Si
+- Codigos HTTP, mensaje happy path y flujo de error
 
-Razon - GET nunca modifica estado del servidor. Múltiples llamadas iguales retornan el mismo resultado.
+    - Happy Path - 200 OK - Producto consultado correctamente
 
-Roles con acceso - Cliente
+    - Producto no existe - 404 Not Found - Producto no encontrado
 
-Datos entrada:
+    - Sin autenticación - 401 Unauthorized - Token requerido
 
+    - Error servidor - 500 Internal Server Error - Error al consultar producto
 
 
-Datos Salida - Autorizacion: Bearer token
+### F-O4 Los usuarios puede crear un pedido agregando productos escaneados.
 
-Ejemplo de entrada:
+- Verbo HTTP - POST
 
-{
+- Idempotente - NO
 
-ID-Codigo-QR: "Uuid"
+- Razon - Cada llamada puede acumular cantidades o crear nuevas entradas en el carrito.
 
-}
+- Roles con acceso - Cliente
 
-Ejemplo de salida:
+- Datos entrada: id del producto, cantidad del producto a pedir 
 
-{
+- Datos Salida - Autorizacion: Bearer token y informacion del pedido 
 
+- Ejemplo de entrada:
 
+        {
+        "productId": "uuid",
+        
+        "quantity": "integer"
+        }
 
-}
+- Ejemplo de salida:
 
+        {
+        "productId": "uuid",
+        
+        "productName": "Cafe con leche",
+        
+        "quantity": 2,
+        
+        "unitPrice": 2500,
+        
+        "subtotal": 5000
+        }
 
-Validaciones - solo devolver productos con status disponible.
 
-Codigos HTTP, mensaje happy path y flujo de error
+- Validaciones input – productId no vacío, quantity mayor a 0.
 
-Happy Path - 200 OK	— Lista de productos disponibles
+- Validaciones de negocio -
 
-Sin autenticación - 401 Unauthorized - Token requerido
+  - El producto debe estar disponible
+  
+  - Debe haber stock suficiente
+  
+  - El usuario solo puede tener un pedido activo
 
-Error servidor - 500 Internal Server Error - Error al consultar productos
+- Codigos HTTP, mensaje happy path y flujo de error
 
+    - Happy Path - 201 Created - Pedido creado correctamente
 
-- F-O4 Los usuarios puede crear un pedido agregando productos escaneados.
+    - Stock insuficiente - 409 Conflict - No hay stock suficiente
 
-Verbo HTTP - POST
+    - Sin autenticación - 401 Unauthorized - Token requerido
 
-Idempotente - NO
+    - Error servidor - 500 Internal Server Error - Error al crear pedido
 
-Razon - Cada llamada puede acumular cantidades o crear nuevas entradas en el carrito.
 
-Roles con acceso - Cliente
-
-Datos entrada: id del producto, cantidad del producto a pedir 
-
-Datos Salida - Autorizacion: Bearer token y informacion del pedido 
-
-Ejemplo de entrada:
-
-{
-"productId": "uuid",
-
-"quantity": "integer"
-}
-
-
-Ejemplo de salida:
-
-{
-"productId": "uuid",
-
-"productName": "Cafe con leche",
-
-"quantity": 2,
-
-"unitPrice": 2500,
-
-"subtotal": 5000
-}
-
-
-Validaciones - solo devolver productos con status disponible.
-
-Codigos HTTP, mensaje happy path y flujo de error
-
-Happy Path - 200 OK	— Lista de productos disponibles
-
-Sin autenticación - 401 Unauthorized - Token requerido
-
-Error servidor - 500 Internal Server Error - Error al consultar productos
-
-
-- F-O5 El administrador puede cambiar el estado del pedido a:
-  ○ EN_PREPARACION
-  ○ ENTREGADO
-
-Verbo HTTP - PUT
-
-Idempotente - Si
-
-Razon - PUT reemplaza el recurso completo. Múltiples llamadas con el mismo body producen el mismo estado.
-
-Roles con acceso - Administrador 
-
-Datos entrada: id del producto, cantidad del producto a pedir
-
-Datos Salida - Autorizacion: Bearer token y informacion del pedido
-
-Ejemplo de entrada:
-
-{
-"cambioEstadoProducto" : "Disponible"
-}
-
-Ejemplo de salida:
-
-{
-
-"productId": "Disponible"
-
-}
-
-
-Validaciones - Revisar si un producto en estado de disponible, no se pueda cambiar a su mismo estado actual
-
-
-- F-O6 El cliente puede cancelar el pedido solo en estado CREADO.
+### F-O5 El administrador puede cambiar el estado del pedido a:
+### ○ EN_PREPARACION
+### ○ ENTREGADO
 
 - Verbo HTTP - PUT
 
-Idempotente - SI
+- Idempotente - Si
 
-Razon - PUT reemplaza el recurso completo. Múltiples llamadas con el mismo body producen el mismo estado.
+- Razon - PUT reemplaza el recurso completo. Múltiples llamadas con el mismo body producen el mismo estado.
 
-Roles con acceso - Cliente
+- Roles con acceso - Administrador 
 
-Datos entrada: Estado del pedido 
+- Datos entrada: estado del pedido
 
-Datos Salida - Mensaje de confirmacion de cancelacion de pedido 
+- Datos Salida - Autorizacion: Bearer token y informacion del pedido
 
-Ejemplo de entrada:
+- Ejemplo de entrada:
 
-{
-"estadoPedido": "CREADO"
-}
+        {
+        "estadoPedido": "EN_PREPARACION"
+        }
+
+- Ejemplo de salida:
+
+        {
+        "orderId": "uuid",
+        "estadoPedido": "EN_PREPARACION"
+        }
 
 
-Ejemplo de salida:
+- Validaciones de negocio – Revisar que el pedido exista y que el cambio de estado sea válido.
 
-{
+### F-O6 El cliente puede cancelar el pedido solo en estado CREADO.
 
-}
+- Verbo HTTP - PUT
 
+- Idempotente - SI
 
-Validaciones - solo cancelar pedido si su estado es CREADO 
+- Razon - PUT reemplaza el recurso completo. Múltiples llamadas con el mismo body producen el mismo estado.
 
-### Punto 2
+- Roles con acceso - Cliente
+
+- Datos entrada: Estado del pedido 
+
+- Datos Salida - Mensaje de confirmacion de cancelacion de pedido 
+
+- Ejemplo de entrada:
+
+        {
+        "estadoPedido": "CREADO"
+        }
+
+- Ejemplo de salida:
+
+        {
+        "mensaje": "Pedido cancelado correctamente"
+        }
+
+- Codigos HTTP, mensaje happy path y flujo de error
+
+    - Happy Path - 200 OK - Pedido cancelado correctamente
+
+    - Estado inválido - 409 Conflict - El pedido no se puede cancelar
+
+    - Pedido no existe - 404 Not Found - Pedido no encontrado
+
+- Validaciones - solo cancelar pedido si su estado es CREADO
+
+### F‑O7 Confirmar pedido y actualizar stock
+
+- Verbo HTTP - PUT
+
+- Idempotente - NO
+
+- Razon - Al confirmar el pedido se descuenta el stock de los productos, lo cual modifica el estado del sistema.
+
+- Roles con acceso - Administrador
+
+- Datos entrada: id del pedido
+
+- Datos Salida - Mensaje de confirmación del pedido
+
+- Ejemplo de entrada:
+
+        {
+        "orderId": "uuid"
+        }
+
+- Ejemplo de salida:
+
+        {
+        "mensaje": "Pedido confirmado y stock actualizado"
+        }
+
+- Validaciones de negocio -
+
+    - El pedido debe existir
+
+    - El pedido debe estar en estado CREADO
+
+    - Stock suficiente para todos los productos
+
+- Codigos HTTP, mensaje happy path y flujo de error
+
+    - Happy Path - 200 OK - Pedido confirmado correctamente
+
+    - Stock insuficiente - 409 Conflict - No hay stock suficiente
+
+    - Pedido no existe - 404 Not Found - Pedido no encontrado
+
+---
+
+## Punto 2
 La diferencia es que las validaciones de input validan el formato, tipo y obligaciones; mientras que las validaciones de negocio validan reglas del sistema o dominio como tal.
 
 Por ejemplo las validaciones de input validan cosas como email valido y las validaciones de negocio validan que sea email institucional o no este duplicado.
 
+---
 
-### Punto 3
+## Punto 3
 
 - Autenticacion: Es el proceso por el cual se verifica la identidad del usuario o cliente que intenta acceder a la API
 
@@ -323,21 +393,27 @@ Por ejemplo las validaciones de input validan cosas como email valido y las vali
 
 La autenticacion dice quien es el usuario, la autorizacion define que puede hacer el usuario y la integridad revisa si el mensaje o dato llego correctamente y completo como fue enviado.
 
-### Punto 4
+---
+
+## Punto 4
 ![img.png](docs/uml/DiagramaComponentesGeneral.png)
 
-### Punto 5
+---
 
-- Si no se maneja un buen orden o separacion de capas dentro de un proyecto de software 
+## Punto 5
+
+Si no se maneja un buen orden o separacion de capas dentro de un proyecto de software 
 se puede complicar el proyecto a la hora de extenderlo, leerlo y entenderlo a nivel de 
 codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto, por lo que no se cumplirian con algunos principios SOLID.
 
+---
 
-### Punto6
-![img.png](docs/uml/DiagramaComponentesEspecifico.png)
+## Punto6
+![img_1.png](docs/uml/DiagramaEspecifico.png)
 
+---
 
-### Punto 7
+## Punto 7
 
 - Servicios: Es el que se encarga de tener reglas de la logica de negocio.
 
@@ -347,29 +423,53 @@ codificacion, el equipo se confudira y no lograra manejar bien todo el proyecto,
 
 Los servicios manejan la logica del negocio, las utilidades manejan funciones que no dependen de esta logica de negocio y los validadores verifican que los datos cumplan con las reglas del negocio.
 
+---
 
-### Punto 11
+## Punto 8
+
+---
+
+## Punto 9
+
+---
+
+---
+
+## Punto 11
 - Ciclo TDD: Red, falla porque no esxiste implementacion, Greeen, Se implementa lo minimo necesario, las pruebas pasan, y Refactor, LImpieza codigo sin romper pruebas.
 - Casos de prueba iniciales, con escenarios exitoso el usuario crea el pedido correctamente; en escenario de error, Stock insuficiente, usuario con pedio activo.
 - Validaciones clave: un solo pedido activo, estado inicial correcto y usuario autenticado
 
-### Punto 12
+---
+
+## Punto 12
 Detectan violaciones a reglas, evitan regresiones, garantizan invariantes y facilitan refactorizacion.
 
-### Punto 13
-1. Build: Compilacion proyecto.
-2. Test: Ejecucion de pruebas
-3. Quality Check: Anaisis estatico de cobertura
-4. Package: Generacion del artefacto.
-5. Deploy: Despliegue en entorno destino
+---
 
-### Punto 14
+## Punto 13
+***1. Build:*** Compilacion proyecto.
+
+***2. Test:*** Ejecucion de pruebas
+
+***3. Quality*** Check: Anaisis estatico de cobertura
+
+***4. Package:*** Generacion del artefacto.
+
+***5. Deploy:*** Despliegue en entorno destino
+
+---
+
+## Punto 14
  No se permite el despliegue. Riesgo de errores, violacion de reglas de negocio perdida de confieanza del cierrE.
  
 Un pipeline correcto frena el proceso automaticamente.
 
-### Punto 15
+---
+
+## Punto 15
 a. Timestamp, nivel del log, Endpoint, mensaje de error, id del usuario.
+
 b. Contraseñas, tokens JWT, datos personales, informacion financiera.
 
 
