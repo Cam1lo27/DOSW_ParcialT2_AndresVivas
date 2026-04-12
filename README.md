@@ -514,6 +514,13 @@ b. Contraseñas, tokens JWT, datos personales, informacion financiera.
 
 ![pedido.png](docs/images/pedido.png)
 
+---
+
+
+# Parte practica
+
+Reporte Jacoco
+![img.png](docs/images/Jacoco.png)
 
 
 
