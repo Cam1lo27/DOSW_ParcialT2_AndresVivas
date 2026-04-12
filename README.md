@@ -513,3 +513,49 @@ b. Contraseñas, tokens JWT, datos personales, informacion financiera.
 - Pantalla de Creación del pedido
 
 ![pedido.png](docs/images/pedido.png)
+
+
+
+
+
+
+
+---
+
+
+## Punto 4 parte practica
+
+
+- Registro usuario
+
+![swaggerRegistro.png](docs/images/swaggerRegistro.png)
+
+- Añadir Producto a la tienda
+
+![swaggerProductos.png](docs/images/swaggerProductos.png)
+
+- Consulta productos
+
+![swaggerConsultaProductos.png](docs/images/swaggerConsultaProductos.png)
+
+- Crear pedido
+
+![swaggerCrearPedido.png](docs/images/swaggerCrearPedido.png)
+
+- Cambio de estado de pedido
+
+![swaggerCambioEstadoPedido.png](docs/images/swaggerCambioEstadoPedido.png)
+
+- Informacion creada en la base de datos
+
+- Usuarios
+
+![Captura de pantalla 2026-04-11 185548.png](docs/images/Captura%20de%20pantalla%202026-04-11%20185548.png)
+
+- Pedidos
+
+![Captura de pantalla 2026-04-11 185642.png](docs/images/Captura%20de%20pantalla%202026-04-11%20185642.png)
+
+- Productos
+
+![Captura de pantalla 2026-04-11 185722.png](docs/images/Captura%20de%20pantalla%202026-04-11%20185722.png)
